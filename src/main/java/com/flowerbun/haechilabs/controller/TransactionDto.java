@@ -13,6 +13,7 @@ public class TransactionDto {
 
     @Data
     public static class ListRequest {
+
         @JsonProperty("starting_after")
         private String startingAfter;
         @JsonProperty("ending_beofore")
@@ -26,6 +27,7 @@ public class TransactionDto {
 
     @Data
     public static class Response {
+
         private String hash;
         private String status;
         private String confirmedStatus;
@@ -41,6 +43,7 @@ public class TransactionDto {
 
     @Data
     public static class ListResponse {
+
         private List<Response> data;
 
         public ListResponse(List<Tx> list, Long latestBlockNumber) {
@@ -49,5 +52,14 @@ public class TransactionDto {
                     .collect(Collectors.toList());
         }
 
+    }
+
+    @Data
+    public static class SendRequest {
+
+        private String privateKey;
+        private String toAddress;
+        private String amount;
+        private String unit;
     }
 }

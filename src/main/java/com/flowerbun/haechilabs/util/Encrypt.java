@@ -51,7 +51,7 @@ public class Encrypt {
             Cipher cipher = Cipher.getInstance(ALGORITHM);
             SecretKeySpec keySpec = new SecretKeySpec(KEY.getBytes(), "AES");
             IvParameterSpec ivSpec = new IvParameterSpec(IV.getBytes());
-            cipher.init(Cipher.ENCRYPT_MODE, keySpec, ivSpec);
+            cipher.init(Cipher.DECRYPT_MODE, keySpec, ivSpec);
 
             byte[] decodedBytes = Base64.getDecoder().decode(encrypted);
             byte[] decrypted = cipher.doFinal(decodedBytes);

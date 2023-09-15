@@ -3,6 +3,7 @@ package com.flowerbun.haechilabs.wallet.infra;
 import java.math.BigDecimal;
 import org.springframework.stereotype.Service;
 
+import com.flowerbun.haechilabs.exception.CustomException;
 import com.flowerbun.haechilabs.wallet.domain.BalanceUnit;
 import com.flowerbun.haechilabs.wallet.domain.SendTx;
 import com.flowerbun.haechilabs.wallet.domain.Wallet;
@@ -34,7 +35,7 @@ public class EthTransactionSender {
             ).send();
             return new EthSendTransaction(receipt, balance);
         } catch (Exception e) {
-            return null;
+            throw new CustomException("ETH 전송에 실패했습니다.");
         }
 
 
